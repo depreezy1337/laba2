@@ -34,12 +34,9 @@ IntVector* int_vector_new(size_t initial_capacity) {
  
  
  void int_vector_free(IntVector* v) {
-	 if (v != NULL) {
-		 free(v->pointer);
-		 free(v);
-		 v = NULL;
-
-	 }
+	free(v->pointer);
+	free(v);
+		 
  }
 
 
@@ -52,7 +49,7 @@ IntVector* int_vector_new(size_t initial_capacity) {
  }
 
 
- int int_vector_set_item(IntVector* v, size_t index, int item) { //íå ìîæåò áûòü ìåíüøå íóëÿ
+ int int_vector_set_item(IntVector* v, size_t index, int item) { //Ã­Ã¥ Ã¬Ã®Ã¦Ã¥Ã² Ã¡Ã»Ã²Ã¼ Ã¬Ã¥Ã­Ã¼Ã¸Ã¥ Ã­Ã³Ã«Ã¿
 	 if (index >= v->size) {
 		 return -1;
 	 }
@@ -74,8 +71,8 @@ IntVector* int_vector_new(size_t initial_capacity) {
 	 if (v == NULL) {
 		 return -1;
 	 }
-	 if (v->size == v->capacity) { // åñëè ìåñòî çàêîí÷èëîñü 
-		 v->capacity==0? (v->capacity=1):(v->capacity *= 2);//îïðåäåëåíèå ¸ìêîñòè íîâîãî âåêòîðà
+	 if (v->size == v->capacity) { // Ã¥Ã±Ã«Ã¨ Ã¬Ã¥Ã±Ã²Ã® Ã§Ã ÃªÃ®Ã­Ã·Ã¨Ã«Ã®Ã±Ã¼ 
+		 v->capacity==0? (v->capacity=1):(v->capacity *= 2);//Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Ã¥Ã­Ã¨Ã¥ Â¸Ã¬ÃªÃ®Ã±Ã²Ã¨ Ã­Ã®Ã¢Ã®Ã£Ã® Ã¢Ã¥ÃªÃ²Ã®Ã°Ã 
 		 int* new_obj = (int*)realloc(v->pointer, sizeof(int) * v->capacity); 
 		 if (!new_obj) {
 			 v->pointer = NULL;
